@@ -4,8 +4,8 @@
   "description": "",
   "homepage": "https://github.com/Vandenvin/goit-js-hw-08",
   "scripts": {
-    "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-08/"
+    "start": "parcel src/*.html --open",
+    "build": "parcel build src/*.html --public-url /goit-js-hw-08/ "
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,8 @@
     "url": "https://github.com/Vandenvin/goit-js-hw-08/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "simplelightbox": "^2.10.3"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
