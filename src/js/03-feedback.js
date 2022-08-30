@@ -5,7 +5,10 @@ const input = document.querySelector('input');
 const textarea = document.querySelector('textarea');
 
 const STORAGE_KEY = 'fedback-form-state';
-const formData = {};
+const formData = {
+  email: '',
+  message: '',
+};
 
 form.addEventListener('input', throttle(onInputChange, 500));
 form.addEventListener('submit', onFormSubmit);
@@ -37,11 +40,24 @@ function onFormSubmit(event) {
 
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
+
+  formData.email = '';
+  formData.message = '';
 }
 
 function populateInputFromLocalStoradge() {
   const savedInfo = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  if (savedInfo) {
+
+  if (savedInfo.email === '' && savedInfo.message === '') {
+    input.value = '';
+    textarea.value = '';
+  } else if (savedInfo.email !== '' && savedInfo.message === '') {
+    input.value = savedInfo.email;
+    textarea.value = '';
+  } else if (savedInfo.email === '' && savedInfo.message !== '') {
+    input.value = '';
+    textarea.value = savedInfo.message;
+  } else {
     input.value = savedInfo.email;
     textarea.value = savedInfo.message;
   }
